@@ -15,6 +15,7 @@ urlpatterns = [
     path('getStoreDetails', views.GetStoreDetails.as_view(), name='getStoreDetails'),
     path('getCustomerHomeContent', views.GetCustomerHomeContent.as_view(), name='getCustomerHomeContent'),
     path('syncCheckInVehicles', views.SyncCheckInVehicles.as_view(), name='syncCheckInVehicles'),    
+    path('syncCheckOutVehicles', views.SyncCheckOutVehicles.as_view(), name='syncCheckOutVehicles'),    
     path('getVehicleTypes', views.GetVehicleTypes.as_view(), name='getVehicleTypes'),    
 
 

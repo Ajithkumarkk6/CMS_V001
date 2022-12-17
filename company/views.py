@@ -300,30 +300,65 @@ class SyncCheckInVehicles(GenericAPIView):
     access_rights = GenericAPIView.ACCESS_TYPE_EMPLOYEE
 
     def proceed_post(self, request, format=None):
-        # data = request.data        
-        # print(data)
-
-        # validateRequest  = ValidateRequest(request=request, request_serializer=None)
-        # if not validateRequest.is_valid():
-        #     return Response(get_validation_failure_response(None, validateRequest.errors_formatted()))
-
-        print("dfsdfdf01", self.payload)
         if 'entrygate_dataset' in self.payload:
-            print("dfsdfdf012")
-
             for it in self.payload['entrygate_dataset']:
-                print("dfsdfdf013")
-
                 vehicleDetailsForm = {}
                 vehicleDetailsForm['base_price'] = 20
                 vehicleDetailsForm['entry_time'] = it['entry_time']
                 vehicleDetailsForm['vehicle_number'] = it['vehicle_number']
+                vehicleDetailsForm['transaction_id'] = it['transaction_id']
                 vehicleDetailsForm['company_branch'] = self.get_employee_company_info().company_branch
-
+                vehicleDetailsForm['vehicle_type_id'] = it['vehicle_type_id']
+                
                 VehicleDetails.objects.create(**vehicleDetailsForm)
 
-        return Response(get_success_response("Checkin Details Updated Successfully"))
+        return Response(get_success_response("Entry Checkin Details Updated Successfully"))
 
+
+class SyncCheckInVehicles(GenericAPIView):
+    
+    # authentication_classes = [authentication.TokenAuthentication]
+    # permission_classes = [permissions.IsAuthenticated]
+    access_rights = GenericAPIView.ACCESS_TYPE_EMPLOYEE
+
+    def proceed_post(self, request, format=None):
+        if 'entrygate_dataset' in self.payload:
+            for it in self.payload['entrygate_dataset']:
+                vehicleDetailsForm = {}
+                vehicleDetailsForm['base_price'] = 20
+                vehicleDetailsForm['entry_time'] = it['entry_time']
+                vehicleDetailsForm['vehicle_number'] = it['vehicle_number']
+                vehicleDetailsForm['transaction_id'] = it['transaction_id']
+                vehicleDetailsForm['company_branch'] = self.get_employee_company_info().company_branch
+                vehicleDetailsForm['vehicle_type_id'] = it['vehicle_type_id']
+                
+                VehicleDetails.objects.create(**vehicleDetailsForm)
+
+        return Response(get_success_response("Entry Checkin Details Updated Successfully"))
+
+
+class SyncCheckOutVehicles(GenericAPIView):
+    
+    # authentication_classes = [authentication.TokenAuthentication]
+    # permission_classes = [permissions.IsAuthenticated]
+    access_rights = GenericAPIView.ACCESS_TYPE_EMPLOYEE
+
+    def proceed_post(self, request, format=None):
+
+        if 'exitgate_dataset' in self.payload:
+            for it in self.payload['exitgate_dataset']:
+                
+                print("=====", it)
+                vehicleDetails = VehicleDetails.objects.filter(transaction_id = it['transaction_id'])
+                if 'deviceId' in it:
+                    del it['deviceId']
+                    del it['entry_time']
+                vehicleDetailsForm = it
+                vehicleDetailsForm['company_branch'] = self.get_employee_company_info().company_branch
+                vehicleDetailsForm['is_complete'] = True
+                vehicleDetails.update(**vehicleDetailsForm)
+
+        return Response(get_success_response("Entry Checkin Details Updated Successfully"))
 
 
 class GetStoreDetails(APIView):

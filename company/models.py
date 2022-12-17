@@ -152,3 +152,8 @@ class VehicleDetails(BaseModelMixin):
     exit_time = models.DateTimeField(null=True, blank=True)
     company = models.ForeignKey(CompanyMeta, on_delete=models.CASCADE, null=True, blank=True)
     company_branch = models.ForeignKey(CompanyBranchInfo, on_delete=models.SET_NULL, null=True, blank=True)
+    transaction_id = models.CharField(max_length=10, null=True, blank=True)
+    total_time = models.CharField(max_length=10, null=True, blank=True)
+    total_price = models.CharField(max_length=10, null=True, blank=True)
+    payment_mode = models.CharField(max_length=10, null=True, blank=True)
+    is_complete = models.BooleanField(default=False)
