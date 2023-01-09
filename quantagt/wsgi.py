@@ -12,7 +12,7 @@ import sys
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'zenylog.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quantagt.settings')
 print("sys.pathprint(sys.path)print(sys.path)print(sys.path)==========")
 print(sys.path)
 
