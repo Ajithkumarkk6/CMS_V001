@@ -22,7 +22,7 @@ from employee.models import (EmployeeCompanyInfo, EmployeeDesignation,
 from rest_framework import authentication, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from zenylog import settings
+from quantagt import settings
 
 from authentication.date_utils import get_current_time_aware, get_start_end_date_today
 from authentication.message_utils import (send_company_login_OTP,

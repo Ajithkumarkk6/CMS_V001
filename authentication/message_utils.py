@@ -8,23 +8,23 @@ TEMP_REGISTRATION_SUCCESSFUL = {
 "purpose": "TXN",
 "sender_id":"ZENYLG",
 "template_id":1107165709151830898,
-"content":"Thank you {#var#} {#var#} {#var#} for registering with Zenylog. You will be notified shortly upon approval."
+"content":"Thank you {#var#} {#var#} {#var#} for registering with Quantagt. You will be notified shortly upon approval."
 }
 
 TEMP_REGISTRATION_OTP = {
-"message_title" : "Zenylog Register OTP",
+"message_title" : "Quantagt Register OTP",
 "purpose": "OTP",
 "sender_id":"ZENYLG",
 "template_id":1107165709050778516,
-"content":"Your Verification OTP for Zenylog Registration is {#var#}"
+"content":"Your Verification OTP for Quantagt Registration is {#var#}"
 }
 
 TEMP_LOGIN_OTP = {
-"message_title" :"Zenylog Login Otp",
+"message_title" :"Quantagt Login Otp",
 "purpose": "OTP",
 "sender_id":"ZENYLG",
 "template_id":1107165709004657343,
-"content":"Your Login OTP for Zenylog is {#var#}"
+"content":"Your Login OTP for Quantagt is {#var#}"
 }
 
 TEMP_EMPLOYEE_ADDED = {
@@ -32,7 +32,7 @@ TEMP_EMPLOYEE_ADDED = {
 "purpose": "TXN",
 "sender_id":"ZENYLG",
 "template_id":1107165832412060587,
-"content":"You have been successfully registered with Zenylog by {#var#}. Download the Zenylog App in Play store/App store to login."
+"content":"You have been successfully registered with Quantagt by {#var#}. Download the Quantagt App in Play store/App store to login."
 }
 
 
@@ -76,7 +76,7 @@ def send_company_registration_OTP(name, mobile_number, otp):
         print(e.response.text)
 
 def send_employee_registration(company_name, mobile_number):
-    # "content":"You have been successfully registered with Zenylog by {#var#}. Download the Zenylog App in Play store/App store to login."
+    # "content":"You have been successfully registered with Quantagt by {#var#}. Download the Quantagt App in Play store/App store to login."
     data = prepare_request(TEMP_EMPLOYEE_ADDED, COUNTRY_PREFIX_IN+mobile_number)
     content = data['payload']['body']
     content = content.replace(REPLACE_STR, company_name) 

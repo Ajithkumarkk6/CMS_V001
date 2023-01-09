@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/zenylog.iml" filepath="$PROJECT_DIR$/.idea/zenylog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/quantagt.iml" filepath="$PROJECT_DIR$/.idea/quantagt.iml" />
     </modules>
   </component>
 </project>
