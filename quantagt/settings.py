@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'company',
     'employee',
     'providerservice',
-    'appointment'
+    'appointment',
+    'construction'
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
